@@ -6,24 +6,24 @@ import {
   Users, BookOpen, UserCheck, BarChart2, 
   Settings, CheckSquare, MessageSquare, 
   Target, GraduationCap, Calendar, 
-  Bell, FileText, Fingerprint, QrCode, ClipboardList, BookMarked, X
+  Bell, FileText, QrCode, ClipboardList, BookMarked, X, Briefcase, Banknote, History
 } from 'lucide-react';
 
 const ADMIN_LINKS = [
   { name: 'Dashboard', path: '/admin', icon: BarChart2, exact: true },
   { name: 'User Management', path: '/admin/users', icon: Users },
-  { name: 'Academic Mgmt', path: '/admin/academic', icon: BookOpen },
+  { name: 'Employees & Faculty', path: '/admin/employees', icon: Briefcase },
+  { name: 'Payroll', path: '/admin/payroll', icon: Banknote },
   { name: 'Enrollment', path: '/admin/enrollment', icon: UserCheck },
-  { name: 'Reports', path: '/admin/reports', icon: FileText },
-  { name: 'School Mgmt', path: '/admin/school', icon: Calendar },
+  { name: 'Academic Mgmt', path: '/admin/academic', icon: BookOpen },
   { name: 'Settings', path: '/admin/settings', icon: Settings },
 ];
 
 const FACULTY_LINKS = [
   { name: 'Dashboard', path: '/faculty', icon: BarChart2, exact: true },
   { name: 'My Classes', path: '/faculty/classes', icon: BookOpen },
-  { name: 'Biometric Scanner', path: '/faculty/scanner', icon: Fingerprint, badge: 'UI Only' },
   { name: 'Grades', path: '/faculty/grades', icon: CheckSquare },
+  { name: 'Grades History', path: '/faculty/grades/history', icon: History },
   { name: 'Attendance', path: '/faculty/attendance', icon: ClipboardList },
   { name: 'Analytics', path: '/faculty/analytics', icon: Target },
 ];
@@ -88,7 +88,7 @@ export default function Sidebar() {
   };
 
   return (
-    <>
+    <>  
       {/* Mobile overlay */}
       {isSidebarOpen && (
         <div 

@@ -9,6 +9,7 @@ export interface User {
   avatar?: string;
   email: string;
   srNumber?: string; // For students
+  gradeLevel?: string; // For basic education students
 }
 
 interface AuthState {

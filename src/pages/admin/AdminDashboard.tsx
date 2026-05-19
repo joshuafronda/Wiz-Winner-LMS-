@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/src/components/ui/Card';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
-import { Users, BookOpen, GraduationCap, TrendingUp, Activity } from 'lucide-react';
+import { Users, BookOpen, GraduationCap, TrendingUp, Activity, ToggleRight } from 'lucide-react';
+import { useState } from 'react';
 
 const ENROLLMENT_DATA = [
   { name: 'Jan', students: 4000, new: 240 },
@@ -27,6 +28,8 @@ const ACTIVITY_LOGS = [
 ];
 
 export default function AdminDashboard() {
+  const [evaluationsEnabled, setEvaluationsEnabled] = useState(true);
+  
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -35,6 +38,44 @@ export default function AdminDashboard() {
           <p className="text-slate-500 mt-1">Welcome back. Here's your institutional overview today.</p>
         </div>
       </div>
+
+      {/* Evaluation Control Section */}
+      <Card className="border-purple-200 bg-gradient-to-r from-purple-50 to-purple-100/50">
+        <CardHeader className="pb-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <ToggleRight className="w-5 h-5 text-purple-600" />
+              <CardTitle className="text-purple-900">Teacher Evaluation Control</CardTitle>
+            </div>
+            <button
+              onClick={() => setEvaluationsEnabled(!evaluationsEnabled)}
+              className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
+                evaluationsEnabled ? 'bg-purple-600' : 'bg-slate-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
+                  evaluationsEnabled ? 'translate-x-7' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            <p className="text-sm text-purple-900 font-medium">
+              Status: <span className={evaluationsEnabled ? 'text-emerald-600 font-bold' : 'text-red-600 font-bold'}>
+                {evaluationsEnabled ? '✓ Enabled for Students' : '✗ Disabled'}
+              </span>
+            </p>
+            <p className="text-xs text-purple-800">
+              {evaluationsEnabled 
+                ? 'Students can now submit teacher evaluations. This feature is active.' 
+                : 'Students cannot access evaluations. Toggle ON to enable the feature.'}
+            </p>
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
          {METRICS.map((metric) => {

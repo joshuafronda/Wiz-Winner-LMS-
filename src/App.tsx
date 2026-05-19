@@ -6,11 +6,14 @@ import FacultyLogin from '@/src/pages/auth/FacultyLogin';
 import StudentLogin from '@/src/pages/auth/StudentLogin';
 import AdminDashboard from '@/src/pages/admin/AdminDashboard';
 import UserManagement from '@/src/pages/admin/UserManagement';
+import EmployeeManagement from '@/src/pages/admin/EmployeeManagement';
+import AdminPayslips from '@/src/pages/admin/AdminPayslips';
 import FacultyDashboard from '@/src/pages/faculty/FacultyDashboard';
 import MyClasses from '@/src/pages/faculty/MyClasses';
-import BiometricScanner from '@/src/pages/faculty/BiometricScanner';
 import FacultyGrades from '@/src/pages/faculty/Grades';
+import GradesHistory from '@/src/pages/faculty/GradesHistory';
 import FacultyAttendance from '@/src/pages/faculty/Attendance';
+import Analytics from '@/src/pages/faculty/Analytics';
 import ClassDetails from '@/src/pages/faculty/ClassDetails';
 import StudentDashboard from '@/src/pages/student/StudentDashboard';
 import DigitalID from '@/src/pages/student/DigitalID';
@@ -23,8 +26,12 @@ import EmployeeID from '@/src/pages/employee/EmployeeID';
 import { Settings, Construction, Wrench } from 'lucide-react';
 
 import AcademicManagement from '@/src/pages/admin/AcademicManagement';
+import EnrollmentManagement from '@/src/pages/admin/EnrollmentManagement';
+import SchoolManagement from '@/src/pages/admin/SchoolManagement';
 
 import ViewAllGrades from '@/src/pages/student/ViewAllGrades';
+import CurrentSubjects from '@/src/pages/student/CurrentSubjects';
+import CurrentGrades from '@/src/pages/student/CurrentGrades';
 
 // Enhanced placeholder for visually pleasing under-construction sections
 const Placeholder = ({ title, role }: { title: string, role: 'admin' | 'faculty' | 'student' | 'employee' }) => {
@@ -64,10 +71,12 @@ export default function App() {
         <Route path="/admin" element={<MainLayout allowedRole="admin" />}>
            <Route index element={<AdminDashboard />} />
            <Route path="users" element={<UserManagement />} />
+           <Route path="employees" element={<EmployeeManagement />} />
+           <Route path="payroll" element={<AdminPayslips />} />
            <Route path="academic" element={<AcademicManagement />} />
-           <Route path="enrollment" element={<Placeholder title="Enrollment Management" role="admin" />} />
+            <Route path="enrollment" element={<EnrollmentManagement />} />
            <Route path="reports" element={<Placeholder title="Reports" role="admin" />} />
-           <Route path="school" element={<Placeholder title="School Management" role="admin" />} />
+            <Route path="school" element={<SchoolManagement />} />
            <Route path="settings" element={<Placeholder title="System Settings" role="admin" />} />
         </Route>
 
@@ -88,10 +97,10 @@ export default function App() {
            <Route index element={<FacultyDashboard />} />
            <Route path="classes" element={<MyClasses />} />
            <Route path="classes/:id" element={<ClassDetails />} />
-           <Route path="scanner" element={<BiometricScanner />} />
            <Route path="grades" element={<FacultyGrades />} />
+           <Route path="grades/history" element={<GradesHistory />} />
            <Route path="attendance" element={<FacultyAttendance />} />
-           <Route path="analytics" element={<Placeholder title="Analytics" role="faculty" />} />
+           <Route path="analytics" element={<Analytics />} />
         </Route>
 
         {/* Student Routes */}
@@ -99,9 +108,9 @@ export default function App() {
            <Route index element={<StudentDashboard />} />
            <Route path="id" element={<DigitalID />} />
            <Route path="id/capture" element={<Placeholder title="ID Capturing" role="student" />} />
-           <Route path="subjects" element={<Placeholder title="Current Subjects" role="student" />} />
+           <Route path="subjects" element={<CurrentSubjects />} />
            <Route path="subjects/remaining" element={<Placeholder title="Subjects to Complete" role="student" />} />
-           <Route path="grades" element={<Placeholder title="Current Grades" role="student" />} />
+           <Route path="grades" element={<CurrentGrades />} />
            <Route path="grades/all" element={<ViewAllGrades />} />
            <Route path="grades/copy" element={<Placeholder title="Copy of Grades" role="student" />} />
            <Route path="curriculum" element={<Placeholder title="Curriculum" role="student" />} />

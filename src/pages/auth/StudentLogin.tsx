@@ -4,7 +4,14 @@ import { useAuthStore, User } from '@/src/store/authStore';
 import { Button } from '@/src/components/ui/Button';
 import { GraduationCap, ArrowLeft, User as UserIcon, Lock } from 'lucide-react';
 
-const MOCK_STUDENT: User = { id: '3', name: 'Harry Potter', role: 'student', email: 'student@school.edu', srNumber: 'SR-2023-0001' };
+const MOCK_STUDENT: User = {
+   id: '3',
+   name: 'Harry Potter',
+   role: 'student',
+   email: 'student@school.edu',
+   srNumber: 'SR-2023-0001',
+   gradeLevel: 'Grade 3',
+};
 
 export default function StudentLogin() {
   const login = useAuthStore(state => state.login);

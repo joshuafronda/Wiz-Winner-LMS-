@@ -50,9 +50,6 @@ export default function ViewAllGrades() {
                  <option value="3">3rd Quarter</option>
                  <option value="4">4th Quarter</option>
               </select>
-              <Button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-student-main hover:bg-student-dark text-white">
-                 <Download className="w-4 h-4" /> Download PDF
-              </Button>
            </div>
          </div>
       </div>
